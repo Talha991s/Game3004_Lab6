@@ -32,6 +32,15 @@ public class PlayerBehaviour : MonoBehaviour
     public Transform playerCamera;
     public Material selectable;
 
+    [Header("Control Panel")]
+    public GameObject controlPanel;
+
+    [Header("Player Attributes")]
+    
+    public HealthBar healthBar;
+    [Range(0,100)]
+    public int health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -87,6 +96,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             miniMapBorder.SetActive(!miniMapBorder.activeInHierarchy);
         }
+
+        healthBar.SetHealth(health);
     }
 
     void OnDrawGizmos()
@@ -104,5 +115,9 @@ public class PlayerBehaviour : MonoBehaviour
     public void onBButtonPressed()
     {
         miniMapBorder.SetActive(!miniMapBorder.activeInHierarchy);
+    }
+    public void OnIButtonPressed()
+    {
+        controlPanel.SetActive(!controlPanel.activeInHierarchy);
     }
 }
